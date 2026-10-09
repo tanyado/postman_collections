@@ -1,0 +1,19 @@
+$kind: graphql-request
+url: ""
+query: |-
+  
+  query GetStoreOSVersion(
+    $clusterEdgeId: String! = "11111111-2222-4333-8444-555555555555"
+  ) {
+    cluster(clusterEdgeId: $clusterEdgeId) {
+      clusterEdgeId
+      name
+      fleetVersion
+      status {
+        activeVersion
+      }
+    }
+  }
+variables: ""
+settings: {}
+order: 4503596613313102

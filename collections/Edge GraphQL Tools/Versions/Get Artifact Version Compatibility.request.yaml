@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{edgeGraphqlUrl}}"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: '{"query":"query GetArtifactVersionCompatibility($artifactName: String!, $artifactVersion: String!) { getArtifactVersionCompatibility(artifactName: $artifactName, artifactVersion: $artifactVersion) { compatibleArtifacts { name version } } }","variables":{"artifactName":"{{artifactName}}","artifactVersion":"{{artifactVersion}}"}}'
+order: 3000

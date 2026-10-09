@@ -1,0 +1,21 @@
+$kind: graphql-request
+url: "{{edgeGraphqlUrl}}"
+query: |-
+  
+  mutation CancelJob(
+    $jobEdgeId: String! = "a4658d04-d821-4f0f-9444-2ce9c13c53ca"
+  ) {
+    cancelJob(jobEdgeId: $jobEdgeId)
+  }
+variables: |-
+  {
+    "jobEdgeId": "jobEdgeId"
+  }
+settings: {}
+auth:
+  type: bearer
+  credentials:
+    token: "{{edgeToken}}"
+schema:
+  source: auto
+order: 4503599525488434

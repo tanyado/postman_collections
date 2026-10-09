@@ -1,0 +1,21 @@
+$kind: graphql-request
+url: ""
+query: |-
+  
+  query GetArtifactVersionCompatibility(
+    $artifactName: String! = "store"
+    $artifactVersion: String! = "0.23.24"
+  ) {
+    getArtifactVersionCompatibility(
+      artifactName: $artifactName
+      artifactVersion: $artifactVersion
+    ) {
+      compatibleArtifacts {
+        name
+        version
+      }
+    }
+  }
+variables: ""
+settings: {}
+order: 4503597132005650

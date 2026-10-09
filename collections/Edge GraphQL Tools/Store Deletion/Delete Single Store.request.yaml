@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{edgeGraphqlUrl}}"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: '{"query":"mutation DeleteStore($clusterEdgeId: String!, $deleteBSLSite: Boolean!) { deleteCluster(clusterEdgeId: $clusterEdgeId, deleteBSLSite: $deleteBSLSite) }","variables":{"clusterEdgeId":"{{clusterEdgeId}}","deleteBSLSite":true}}'
+order: 1000

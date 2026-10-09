@@ -1,0 +1,27 @@
+$kind: http-request
+url: "{{edgeGraphqlUrl}}"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: '{"query":"mutation Login($username: String!, $password: String!,
+    $organization: String!) { login(username: $username, password: $password,
+    organization: $organization) { token roles banners { bannerEdgeId name
+    bannerBSLId } credentialsExpired sessionTime }
+    }","variables":{"username":"{{edgeUsername}}","password":"{{edgePassword}}","organization":"{{edgeOrganization}}"}}'
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      const response = pm.response.json();
+      pm.test('Login succeeded', () => {
+        pm.expect(response.errors).to.be.undefined;
+        pm.expect(response.data.login.token).to.be.a('string').and.not.empty;
+      });
+      if (response.data?.login?.token) {
+        pm.collectionVariables.set('edgeToken', response.data.login.token);
+      }
+    language: text/javascript
+order: 4066479416803521

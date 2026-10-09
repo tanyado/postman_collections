@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{edgeGraphqlUrl}}"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: '{"query":"mutation DeleteJob($jobEdgeId: String!) { deleteJob(jobEdgeId: $jobEdgeId) }","variables":{"jobEdgeId":"{{jobEdgeId}}"}}'
+order: 2000

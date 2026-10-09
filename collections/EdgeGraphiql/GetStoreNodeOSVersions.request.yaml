@@ -1,0 +1,24 @@
+$kind: graphql-request
+url: https://edge.ncrvoyix.com/api/v2
+query: |-
+  
+  query GetStoreNodeOSVersions(
+    $clusterEdgeId: String! = "11111111-2222-4333-8444-555555555555"
+  ) {
+    terminals(clusterEdgeId: $clusterEdgeId) {
+      terminalId
+      hostname
+      role
+      class
+      version
+      status {
+        status
+        message
+      }
+    }
+  }
+variables: ""
+settings: {}
+schema:
+  source: auto
+order: 4503594042862258

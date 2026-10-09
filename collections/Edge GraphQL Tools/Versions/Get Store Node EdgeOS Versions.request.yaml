@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{edgeGraphqlUrl}}"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: '{"query":"query GetStoreNodeOSVersions($clusterEdgeId: String!) { terminals(clusterEdgeId: $clusterEdgeId) { terminalId hostname role class version status { status message } } }","variables":{"clusterEdgeId":"{{clusterEdgeId}}"}}'
+order: 2000

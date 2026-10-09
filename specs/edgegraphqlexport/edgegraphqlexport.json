@@ -1,0 +1,83 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "edgegraphqlexport",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "https://edge.ncrvoyix.com"
+    },
+    {
+      "url": "{{edgeGraphqlUrl}}"
+    }
+  ],
+  "paths": {
+    "/api/v2": {
+      "post": {
+        "summary": "Get All Clusters",
+        "responses": {},
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/": {
+      "post": {
+        "summary": "Sign In and Save Token",
+        "responses": {},
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "format": "style"
+                  },
+                  "variables": {
+                    "type": "object",
+                    "properties": {
+                      "username": {
+                        "type": "string"
+                      },
+                      "password": {
+                        "type": "string"
+                      },
+                      "organization": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "query": "mutation Login($username: String!, $password: String!, $organization: String!) { login(username: $username, password: $password, organization: $organization) { token roles banners { bannerEdgeId name bannerBSLId } credentialsExpired sessionTime } }",
+                "variables": {
+                  "username": "{{edgeUsername}}",
+                  "password": "{{edgePassword}}",
+                  "organization": "{{edgeOrganization}}"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

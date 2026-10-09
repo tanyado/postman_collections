@@ -1,0 +1,19 @@
+$kind: collection
+description: Edge authentication, jobs, store/node versions, secrets, compatibility, and store deletion. Run Sign In first; successful authentication and refresh requests automatically update edgeToken.
+variables:
+  edgeGraphqlUrl: https://your-edge-host/graphql
+  edgeToken: ""
+  edgeUsername: your-edge-username
+  edgePassword: ""
+  edgeOrganization: your-bsl-organization
+  jobEdgeId: a4658d04-d821-4f0f-9444-2ce9c13c53ca
+  clusterEdgeId: 11111111-2222-4333-8444-555555555555
+  secondClusterEdgeId: 66666666-7777-4888-8999-aaaaaaaaaaaa
+  artifactName: store
+  artifactVersion: 0.23.24
+auth:
+  - id: 6215d181-9874-4630-a1fc-c6ac895dda89
+    type: bearer
+    name: bearer auth
+    credentials:
+      token: "{{edgeToken}}"

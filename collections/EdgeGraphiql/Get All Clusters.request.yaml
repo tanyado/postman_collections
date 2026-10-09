@@ -1,0 +1,25 @@
+$kind: graphql-request
+url: https://edge.ncrvoyix.com/api/v2
+query: |
+  query Clusters {
+      clusters(bannerEdgeId: "bec5c17a-2056-4daa-84c5-3ade168ec595") {
+          clusterEdgeId
+          name
+          projectId
+          bannerEdgeId
+          registered
+          active
+          bslSiteID
+          fleetVersion
+          createdAt
+      }
+  }
+variables: ""
+settings: {}
+auth:
+  type: bearer
+  credentials:
+    token: "{{edgeToken}}"
+schema:
+  source: auto
+order: 4502626320081876

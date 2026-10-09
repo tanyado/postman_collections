@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{edgeGraphqlUrl}}"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: '{"query":"mutation SessionRefresh { sessionRefresh(provider: bsl) }","variables":{}}'
+scripts:
+  - type: afterResponse
+    code: |-
+      const response = pm.response.json();
+      pm.test('Token refresh succeeded', () => {
+        pm.expect(response.errors).to.be.undefined;
+        pm.expect(response.data.sessionRefresh).to.be.a('string').and.not.empty;
+      });
+      if (response.data?.sessionRefresh) {
+        pm.collectionVariables.set('edgeToken', response.data.sessionRefresh);
+      }
+    language: text/javascript
+order: 2000

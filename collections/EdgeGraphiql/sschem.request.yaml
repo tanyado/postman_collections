@@ -1,0 +1,9 @@
+$kind: graphql-request
+url: "{{edgeGraphqlUrl}}"
+query: |+
+  
+variables: ""
+settings: {}
+schema:
+  source: auto
+order: 4503599527495476
